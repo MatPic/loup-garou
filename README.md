@@ -198,18 +198,27 @@ Activer l'authentification anonyme dans la console de Firebase.
 
 - Le code utilise des fonctions plutôt que des classes. Ecrire un bouton sous la forme d'une classe et d'une fonction. Retrouver les équivalences entre les méthodes 
 des composants (telles que setState) et celles des fonctions ?
-    ```javascript
-    class Button extends React.Component {
-      render() {
-        return (<CustomizedButton onClick={this.props.onClick}> {this.props.children} </CustomizedButton>);
-      }
-    }
-    
-    export default Button;
-    ```
+    - Classe :
+        ```javascript
+        class Button extends React.Component {
+          render() {
+            return (<CustomizedButton onClick={this.props.onClick}> {this.props.children} </CustomizedButton>);
+          }
+        }
+        
+        export default Button;
+        ```
+    - Fonction :
+        ```javascript
+        const Button = (props) => {
+          const { onClick, children } = props;
+          return (<CustomizedButton onClick={onClick}> { children }</CustomizedButton>);
+        }
+        ```
 - Comment récupérer les props dans une fonction ?
-    - Soit en faisant `const { onClick, children } = props;` soit en faisant `const x = props.children;`
+    - En appelant props en paramètre.
 - Dans `App.js`, identifier les différents producteurs de données. Retrouver leur définition. Quelles données partagent-ils à l'ensemble de l'application ?
+    - BrowserRouter --> Il partage les routes (fonction de routage)
     - UserProvider dans User.js --> Fait la connexion à la base de donnée et affiche l'état de la connexion (Chargement ...)
     - MasterGameProvider dans MasterGame.js --> Fait la connexion à la base de donnée et ne s'occupe que du côté "game" (pas du côté "user"). Il représente le Game Master.
     - GameProvider dans Game.js --> Fait la connexion à la base de donnée pour envoyer les informations en fonction du jeu (gérer les actions, pages à afficher, ...)
@@ -229,11 +238,13 @@ des composants (telles que setState) et celles des fonctions ?
 - Avec les classes, nous utilisions `withMyContext` pour s'inscrire aux données d'un provider. Identifier dans services/Game.js la fonction qui joue désormais ce rôle.
     - fonction :
         ```javascript
-        <gameContext.Provider value={{game}}>
-          {children}
-        </gameContext.Provider>
+        export const useGame = () => {
+          const {game} = useContext(gameContext);
+          return {game};
+        };
         ```
 - Dans `CodePage`, rappeler comment un formulaire gère les champs de remplissage des données.
+    - A chaque modification de la valeur, on l'ajoute dans le state, puis on affiche la dernière valeur qui a été stockée, au moment de l'envoi.
 
 ### Reprise du design
 
