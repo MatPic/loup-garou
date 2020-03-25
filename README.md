@@ -35,50 +35,49 @@ Quelques petites questions :
     - Au withAuth pour Firebase par exemple. Pour l'utiliser, il suffit de lui donner un paramètre (qu'on définit et qu'on peut modifier) et qu'on peut utiliser dans notre code.
 - Reproduire les deux boutons rouge et bleu présentées dans la vidéo.
     - Code :
-
-<!--import React, { Component } from 'react';-->
-<!--import { MuiThemeProvider, createMuiTheme, withStyles } from "@material-ui/core/styles";-->
-<!--import { Button } from "@material-ui/core/Button";-->
-<!--import blue from "@material-ui/core/colors/blue";-->
-
-<!--class App extends Component {-->
-<!--    render() {-->
-<!--      return (-->
-<!--        <MuiThemeProvider theme={theme}>-->
-<!--            <div>-->
-<!--                <Button className={this.props.classes.myLeftButton}>Hello</Button>-->
-<!--                <Button>World</Button>-->
-<!--            </div>-->
-<!--        </MuiThemeProvider>-->
-<!--      );-->
-<!--    }-->
-    
-<!--}-->
-
-<!--const styles = {-->
-<!--    myLeftButton: {-->
-<!--        backgroundColor: "blue"-->
-<!--    }-->
-<!--};-->
-
-<!--const theme = createMuiTheme ({-->
-<!--    palette: {-->
-<!--        primary: blue-->
-<!--    },-->
-<!--    typography: {-->
-<!--        fontSize: 20,-->
-<!--        fontFamily: "Arial"-->
-<!--    },-->
-<!--    overrides: {-->
-<!--        MuiTheme: {-->
-<!--            root: {-->
-<!--                backgroundColor: "red"-->
-<!--            }-->
-<!--        }-->
-<!--    }-->
-<!--});-->
-
-<!--export default withStyles(styles)(App);-->
+        import React, { Component } from 'react';
+        import { MuiThemeProvider, createMuiTheme, withStyles } from "@material-ui/core/styles";
+        import { Button } from "@material-ui/core/Button";
+        import blue from "@material-ui/core/colors/blue";
+        
+        class App extends Component {
+            render() {
+              return (
+                <MuiThemeProvider theme={theme}>
+                    <div>
+                        <Button className={this.props.classes.myLeftButton}>Hello</Button>
+                        <Button>World</Button>
+                    </div>
+                </MuiThemeProvider>
+              );
+            }
+            
+        }
+        
+        const styles = {
+            myLeftButton: {
+                backgroundColor: "blue"
+            }
+        };
+        
+        const theme = createMuiTheme ({
+            palette: {
+                primary: blue
+            },
+            typography: {
+                fontSize: 20,
+                fontFamily: "Arial"
+            },
+            overrides: {
+                MuiTheme: {
+                    root: {
+                        backgroundColor: "red"
+                    }
+                }
+            }
+        });
+        
+        export default withStyles(styles)(App);
 
 
 ## Styled Components
@@ -101,38 +100,66 @@ Quelques petites questions :
 - Comment utilise-t-on les props dans cette librarie ?
     - On utilise en général les props pour des conditionnels (donner une couleur si telle variable est définie par exemple). Les props sont passées aussi dans le DOM.
 - Reprendre l'exemple du Material UI avec styled-components; l'écrire avec la composition et avec l'héritage.
-    - Code :
+    - Composition :
+        import React from 'react';
+        import styled from 'styled-components'
+        
+        const styles = `
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 8px 16px;
+            border: none;
+        `
+        
+        const myBlueButton = styled.button`
+          ${styles}
+        
+          background-color: blue
+        `
+        
+        const myRedButton = styled.button`
+        ${styles}
+        
+        background-color: red
+        `
+        
+        function App(props) {
+          return (
+            <div>
+              <myRedButton>Hello</myRedButton>
+              <myBlueButton>World</myBlueButton>
+            </div>
+          );
+        }
+    - Héritage :
+        // Dans App.js
+        import React from 'react';
+        
+        function App(props) {
+          return (
+            <div>
+              <FirstButton>Hello</FirstButton>
+              <SecondButton>World</SecondButton>
+            </div>
+          );
+        }
+        
+        export default App;
+        
+        // Dans Button.js
+        import styled from 'styled-components'
 
-<!--import React from 'react';-->
-<!--import styled from 'styled-components'-->
-
-<!--const styles = `-->
-<!--border-radius: 3px;-->
-<!--cursor: pointer;-->
-<!--padding: 8px 16px;-->
-<!--border: none;-->
-<!--`-->
-
-<!--const myBlueButton = styled.button`-->
-<!--  ${styles}-->
-
-<!--  background-color: blue-->
-<!--`-->
-
-<!--const myRedButton = styled.button`-->
-<!--${styles}-->
-
-<!--background-color: red-->
-<!--`-->
-
-<!--function App(props) {-->
-<!--  return (-->
-<!--    <div>-->
-<!--      <myRedButton>Hello</myRedButton>-->
-<!--      <myBlueButton>World</myBlueButton>-->
-<!--    </div>-->
-<!--  );-->
-<!--}-->
+        export const FirstButton = styled.button`
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 8px 16px;
+            border: none;
+            background-color: blue;
+        `
+        
+        export const SecondButton = styled(FirstButton)`
+            background-color: red;
+        `
 
 - Quelles sont les fonctions du contexte de styled-components ?
     - Les fonctions de contexte permettent de gérer un theme.
