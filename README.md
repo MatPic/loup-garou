@@ -36,51 +36,49 @@ Quelques petites questions :
 - Reproduire les deux boutons rouge et bleu présentées dans la vidéo.
     - Code :
 
-`
-import React, { Component } from 'react';
-import { MuiThemeProvider, createMuiTheme, withStyles } from "@material-ui/core/styles";
-import { Button } from "@material-ui/core/Button";
-import blue from "@material-ui/core/colors/blue";
+<!--import React, { Component } from 'react';-->
+<!--import { MuiThemeProvider, createMuiTheme, withStyles } from "@material-ui/core/styles";-->
+<!--import { Button } from "@material-ui/core/Button";-->
+<!--import blue from "@material-ui/core/colors/blue";-->
 
-class App extends Component {
-    render() {
-      return (
-        <MuiThemeProvider theme={theme}>
-            <div>
-                <Button className={this.props.classes.myLeftButton}>Hello</Button>
-                <Button>World</Button>
-            </div>
-        </MuiThemeProvider>
-      );
-    }
+<!--class App extends Component {-->
+<!--    render() {-->
+<!--      return (-->
+<!--        <MuiThemeProvider theme={theme}>-->
+<!--            <div>-->
+<!--                <Button className={this.props.classes.myLeftButton}>Hello</Button>-->
+<!--                <Button>World</Button>-->
+<!--            </div>-->
+<!--        </MuiThemeProvider>-->
+<!--      );-->
+<!--    }-->
     
-}
+<!--}-->
 
-const styles = {
-    myLeftButton: {
-        backgroundColor: "blue"
-    }
-};
+<!--const styles = {-->
+<!--    myLeftButton: {-->
+<!--        backgroundColor: "blue"-->
+<!--    }-->
+<!--};-->
 
-const theme = createMuiTheme ({
-    palette: {
-        primary: blue
-    },
-    typography: {
-        fontSize: 20,
-        fontFamily: "Arial"
-    },
-    overrides: {
-        MuiTheme: {
-            root: {
-                backgroundColor: "red"
-            }
-        }
-    }
-});
+<!--const theme = createMuiTheme ({-->
+<!--    palette: {-->
+<!--        primary: blue-->
+<!--    },-->
+<!--    typography: {-->
+<!--        fontSize: 20,-->
+<!--        fontFamily: "Arial"-->
+<!--    },-->
+<!--    overrides: {-->
+<!--        MuiTheme: {-->
+<!--            root: {-->
+<!--                backgroundColor: "red"-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+<!--});-->
 
-export default withStyles(styles)(App);
-`
+<!--export default withStyles(styles)(App);-->
 
 
 ## Styled Components
@@ -105,38 +103,36 @@ Quelques petites questions :
 - Reprendre l'exemple du Material UI avec styled-components; l'écrire avec la composition et avec l'héritage.
     - Code :
 
-`
-import React from 'react';
-import styled from 'styled-components'
+<!--import React from 'react';-->
+<!--import styled from 'styled-components'-->
 
-const styles = `
-border-radius: 3px;
-cursor: pointer;
-padding: 8px 16px;
-border: none;
-`
+<!--const styles = `-->
+<!--border-radius: 3px;-->
+<!--cursor: pointer;-->
+<!--padding: 8px 16px;-->
+<!--border: none;-->
+<!--`-->
 
-const myBlueButton = styled.button`
-  ${styles}
+<!--const myBlueButton = styled.button`-->
+<!--  ${styles}-->
 
-  background-color: blue
-`
+<!--  background-color: blue-->
+<!--`-->
 
-const myRedButton = styled.button`
-${styles}
+<!--const myRedButton = styled.button`-->
+<!--${styles}-->
 
-background-color: red
-`
+<!--background-color: red-->
+<!--`-->
 
-function App(props) {
-  return (
-    <div>
-      <myRedButton>Hello</myRedButton>
-      <myBlueButton>World</myBlueButton>
-    </div>
-  );
-}
-`
+<!--function App(props) {-->
+<!--  return (-->
+<!--    <div>-->
+<!--      <myRedButton>Hello</myRedButton>-->
+<!--      <myBlueButton>World</myBlueButton>-->
+<!--    </div>-->
+<!--  );-->
+<!--}-->
 
 - Quelles sont les fonctions du contexte de styled-components ?
     - Les fonctions de contexte permettent de gérer un theme.
