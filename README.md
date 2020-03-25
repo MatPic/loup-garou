@@ -92,9 +92,50 @@ Quelques petites questions :
 - Qu'est-ce que sont les tagged templates (délimitées par des backticks) ?
     - Des sortes de variables qui permettent d'ajouter du CSS à des composants.
 - Donner un exemple d'un bouton personnalisé avec et sans les tagged templates ?
+    - Sans:
+        const Button = styles.button(["color: blue"])
+    - Avec:
+        const Button = styled.button`
+        	color: blue;
+        `
 - Comment utilise-t-on les props dans cette librarie ?
+    - On utilise en général les props pour des conditionnels (donner une couleur si telle variable est définie par exemple). Les props sont passées aussi dans le DOM.
 - Reprendre l'exemple du Material UI avec styled-components; l'écrire avec la composition et avec l'héritage.
+    - Code :
+
+<!--import React from 'react';-->
+<!--import styled from 'styled-components'-->
+
+<!--const styles = `-->
+<!--border-radius: 3px;-->
+<!--cursor: pointer;-->
+<!--padding: 8px 16px;-->
+<!--border: none;-->
+<!--`-->
+
+<!--const myBlueButton = styled.button`-->
+<!--  ${styles}-->
+
+<!--  background-color: blue-->
+<!--`-->
+
+<!--const myRedButton = styled.button`-->
+<!--${styles}-->
+
+<!--background-color: red-->
+<!--`-->
+
+<!--function App(props) {-->
+<!--  return (-->
+<!--    <div>-->
+<!--      <myRedButton>Hello</myRedButton>-->
+<!--      <myBlueButton>World</myBlueButton>-->
+<!--    </div>-->
+<!--  );-->
+<!--}-->
+
 - Quelles sont les fonctions du contexte de styled-components ?
+    - Les fonctions de contexte permettent de gérer un theme.
 
 
 ## Mise en place du design
