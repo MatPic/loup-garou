@@ -198,12 +198,42 @@ Activer l'authentification anonyme dans la console de Firebase.
 
 - Le code utilise des fonctions plutôt que des classes. Ecrire un bouton sous la forme d'une classe et d'une fonction. Retrouver les équivalences entre les méthodes 
 des composants (telles que setState) et celles des fonctions ?
+    ```javascript
+    class Button extends React.Component {
+      render() {
+        return (<CustomizedButton onClick={this.props.onClick}> {this.props.children} </CustomizedButton>);
+      }
+    }
+    
+    export default Button;
+    ```
 - Comment récupérer les props dans une fonction ?
+    - Soit en faisant `const { onClick, children } = props;` soit en faisant `const x = props.children;`
 - Dans `App.js`, identifier les différents producteurs de données. Retrouver leur définition. Quelles données partagent-ils à l'ensemble de l'application ?
+    - UserProvider dans User.js --> Fait la connexion à la base de donnée et affiche l'état de la connexion (Chargement ...)
+    - MasterGameProvider dans MasterGame.js --> Fait la connexion à la base de donnée et ne s'occupe que du côté "game" (pas du côté "user"). Il représente le Game Master.
+    - GameProvider dans Game.js --> Fait la connexion à la base de donnée pour envoyer les informations en fonction du jeu (gérer les actions, pages à afficher, ...)
 - Identifier les différentes pages de l'application. Décrire à l'aide d'une phrase le rôle de chacune d'entre elles.
+    - AlivePage.js --> Permet d'afficher la page du joueur quand il est vivant
+    - CastPage.js --> Affiche la page de vote (pour que le joueur puisse voter)
+    - CodePage.js --> Affiche la page qui permet aux joueurs de rejoindre une partie. Elle permet de rentrer un code et un nom.
+    - CreatePage.js --> Permet d'afficher la page de création d'une partie (avec le code qui va être généré et permet aussi d'ajouter un participant)
+    - DeadPage.js --> Affiche la page quand le joueur est mort
+    - EndPage.js --> Affiche la page des résultats, lorsque la partie est terminée (qui a gagné)
+    - NightPage.js --> Affiche ce qu'il se passe lorsque c'est la nuit dans le jeu
+    - ResultsPage.js --> Montre les résultats des votes et les morts qu'il y a eu pendant le tour
+    - SpellPage.js --> Affiche ce que peut faire la sorcière (sorts qu'elle peut utiliser, si elle le veut)
+    - StartPage.js --> Page d'accueil qui permet de créer ou rejoindre une partie
 - Pourquoi voit-on sur plusieurs pages "Chargement du master game en cours" ?
+    - Il y en a le nombre de parties qui sont lancées
 - Avec les classes, nous utilisions `withMyContext` pour s'inscrire aux données d'un provider. Identifier dans services/Game.js la fonction qui joue désormais ce rôle.
-- Dans `CodePage`, rappeler comment un formulaire gère les champs de remplissage des données.o
+    - fonction :
+        ```javascript
+        <gameContext.Provider value={{game}}>
+          {children}
+        </gameContext.Provider>
+        ```
+- Dans `CodePage`, rappeler comment un formulaire gère les champs de remplissage des données.
 
 ### Reprise du design
 
