@@ -35,6 +35,7 @@ Quelques petites questions :
     - Au withAuth pour Firebase par exemple. Pour l'utiliser, il suffit de lui donner un paramètre (qu'on définit et qu'on peut modifier) et qu'on peut utiliser dans notre code.
 - Reproduire les deux boutons rouge et bleu présentées dans la vidéo.
     - Code :
+        ```javascript
         import React, { Component } from 'react';
         import { MuiThemeProvider, createMuiTheme, withStyles } from "@material-ui/core/styles";
         import { Button } from "@material-ui/core/Button";
@@ -78,6 +79,7 @@ Quelques petites questions :
         });
         
         export default withStyles(styles)(App);
+        ```
 
 
 ## Styled Components
@@ -92,15 +94,20 @@ Quelques petites questions :
     - Des sortes de variables qui permettent d'ajouter du CSS à des composants.
 - Donner un exemple d'un bouton personnalisé avec et sans les tagged templates ?
     - Sans:
+        ```javascript
         const Button = styles.button(["color: blue"])
+        ```
     - Avec:
+        ```javascript
         const Button = styled.button`
         	color: blue;
         `
+        ```
 - Comment utilise-t-on les props dans cette librarie ?
     - On utilise en général les props pour des conditionnels (donner une couleur si telle variable est définie par exemple). Les props sont passées aussi dans le DOM.
 - Reprendre l'exemple du Material UI avec styled-components; l'écrire avec la composition et avec l'héritage.
     - Composition :
+        ```javascript
         import React from 'react';
         import styled from 'styled-components'
         
@@ -131,8 +138,10 @@ Quelques petites questions :
             </div>
           );
         }
+        ```
     - Héritage :
         // Dans App.js
+        ```javascript
         import React from 'react';
         
         function App(props) {
@@ -160,6 +169,7 @@ Quelques petites questions :
         export const SecondButton = styled(FirstButton)`
             background-color: red;
         `
+        ```
 
 - Quelles sont les fonctions du contexte de styled-components ?
     - Les fonctions de contexte permettent de gérer un theme.
