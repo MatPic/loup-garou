@@ -18,17 +18,67 @@ Au cas où vous avez un trou de mémoire sur Sass, voici un [rappel de la syntax
 
 Je vous invite à regarder la vidéo de [Human Talks Paris](https://www.youtube.com/watch?v=D3tB_DGgICE).
 
-
 Quelques petites questions :
 
 - Résumer en une phrase l'intérêt de Material UI
+    - Material UI permet de designer une application de façon plus simple
 - Comment importer `material-ui` dans un fichier ?
+    - Il suffit d'importer les composants un par un depuis @material-ui/core/...
 - Comment une application peut utiliser un thème à travers l'ensemble d'un projet ?
 - A quoi sert `createMuiTheme` ?
+    - Englober nos composants dans MuiTheme permet de pouvoir plus modifier ceux-ci (notamment en modifiant ces propriétés comme palette ou typography).
 - A quoi correspond `palette` ?
+    - A modifier les couleurs dans nos composants. C'est un peu comme des couleurs globales.
 - Comment re-définir des propriétés ?
+    - Il faut utiliser overrides.
 - A quoi vous fait penser `withStyle` ? Comment l'utiliser ?
+    - Au withAuth pour Firebase par exemple. Pour l'utiliser, il suffit de lui donner un paramètre (qu'on définit et qu'on peut modifier) et qu'on peut utiliser dans notre code.
 - Reproduire les deux boutons rouge et bleu présentées dans la vidéo.
+    - Code :
+
+<!--import React, { Component } from 'react';-->
+<!--import { MuiThemeProvider, createMuiTheme, withStyles } from "@material-ui/core/styles";-->
+<!--import { Button } from "@material-ui/core/Button";-->
+<!--import blue from "@material-ui/core/colors/blue";-->
+
+<!--class App extends Component {-->
+<!--    render() {-->
+<!--      return (-->
+<!--        <MuiThemeProvider theme={theme}>-->
+<!--            <div>-->
+<!--                <Button className={this.props.classes.myLeftButton}>Hello</Button>-->
+<!--                <Button>World</Button>-->
+<!--            </div>-->
+<!--        </MuiThemeProvider>-->
+<!--      );-->
+<!--    }-->
+    
+<!--}-->
+
+<!--const styles = {-->
+<!--    myLeftButton: {-->
+<!--        backgroundColor: "blue"-->
+<!--    }-->
+<!--};-->
+
+<!--const theme = createMuiTheme ({-->
+<!--    palette: {-->
+<!--        primary: blue-->
+<!--    },-->
+<!--    typography: {-->
+<!--        fontSize: 20,-->
+<!--        fontFamily: "Arial"-->
+<!--    },-->
+<!--    overrides: {-->
+<!--        MuiTheme: {-->
+<!--            root: {-->
+<!--                backgroundColor: "red"-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+<!--});-->
+
+<!--export default withStyles(styles)(App);-->
 
 
 ## Styled Components
@@ -38,7 +88,9 @@ De la même manière, voici une [vidéo](https://www.youtube.com/watch?v=mS0UKNB
 Quelques petites questions :
 
 - Qu'est-ce que le CSS-in-JS ?
+    - Permet d'utiliser des règles CSS dans un fichier JS (avec notamment l'intervention de props par exemple). Permet aussi de générer des classes dynamiques.
 - Qu'est-ce que sont les tagged templates (délimitées par des backticks) ?
+    - Des sortes de variables qui permettent d'ajouter du CSS à des composants.
 - Donner un exemple d'un bouton personnalisé avec et sans les tagged templates ?
 - Comment utilise-t-on les props dans cette librarie ?
 - Reprendre l'exemple du Material UI avec styled-components; l'écrire avec la composition et avec l'héritage.
@@ -54,16 +106,20 @@ Cette plateforme est entièrement numérique, ce qui permet de s'affranchir d'un
 A l'initialisation de la partie, un joueur démarre une partie. Un court identifiant est alors communiqué aux autres joueurs, qui doivent rejoindre la partie.
 Lorsque tous les joueurs ont rejoint la partie, la partie peut démarrer. Chaque joueur joue à tour de rôle depuis son téléphone.
 
-Une contrainte importante est la synchronisation des joueurs : chaque joueur utilise son propre téléphone. Il reçoit un message lorsque c'est à son tour de jouer, ou attend autrement. Pour résoudre techniquement cette contrainte, tout en évitant d'écrire une application en backend, on utilise Firebase. Firebase permet d'utiliser des observateurs, qui réagissent lors d'un appel extérieur, ce qui donne une impression de temps réel.
+Une contrainte importante est la synchronisation des joueurs : chaque joueur utilise son propre téléphone. Il reçoit un message lorsque c'est à son tour de jouer, ou attend 
+autrement. Pour résoudre techniquement cette contrainte, tout en évitant d'écrire une application en backend, on utilise Firebase. 
+Firebase permet d'utiliser des observateurs, qui réagissent lors d'un appel extérieur, ce qui donne une impression de temps réel.
 
-Une partie du code vous est fournie, afin de faciliter la mise en place de Firebase et des context providers. Il vous est demandé d'explorer le code, d'y apporter un design responsive, et de compléter l'application pour ajouter les différentes étapes de jeu.
+Une partie du code vous est fournie, afin de faciliter la mise en place de Firebase et des context providers. Il vous est demandé d'explorer le code, 
+d'y apporter un design responsive, et de compléter l'application pour ajouter les différentes étapes de jeu.
 
 Copier .env dans .env.local et remplir de dernier à l'aide de ses identifiants Firebase.
 Activer l'authentification anonyme dans la console de Firebase.
 
 ### Découverte du code
 
-- Le code utilise des fonctions plutôt que des classes. Ecrire un bouton sous la forme d'une classe et d'une fonction. Retrouver les équivalences entre les méthodes des composants (telles que setState) et celles des fonctions ?
+- Le code utilise des fonctions plutôt que des classes. Ecrire un bouton sous la forme d'une classe et d'une fonction. Retrouver les équivalences entre les méthodes 
+des composants (telles que setState) et celles des fonctions ?
 - Comment récupérer les props dans une fonction ?
 - Dans `App.js`, identifier les différents producteurs de données. Retrouver leur définition. Quelles données partagent-ils à l'ensemble de l'application ?
 - Identifier les différentes pages de l'application. Décrire à l'aide d'une phrase le rôle de chacune d'entre elles.
