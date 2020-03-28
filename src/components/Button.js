@@ -13,6 +13,7 @@ const styles = `
   text-decoration: none;
   font-size: 1em;
   margin: 10px;
+  margin-left: 0;
 `;
 
 const CustomizedButton = styled.button`

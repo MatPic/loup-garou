@@ -258,11 +258,22 @@ des composants (telles que setState) et celles des fonctions ?
 ### Utilisation de Firebase
 
 - Dans 'User.js', comment fait-on pour garder une trace persistente de l'application, même lorsqu'on rafraichit la page ? Comment reconnait-on l'utilisateur lorsqu'il revient dans l'application ?
+    - Pour garder une trace persistente de l'aplication, c'est Firebase qui gère ça a notre place (grâce à auth), ce qui lui permet également de garder en mémoire l'utilisateur.
 - Dans Firebase, nous ne pouvons pas ajouter des champs à un utilisateur. Par conséquent, nous devons créer une collection d'utilisateurs et synchroniser les utilisateurs avec cette table. Expliquer où est-ce que cette synchronisation a lieu.
+    - Grâce à la fonction useUser dans User.js, qu permet soit d'ajouter un utilisateur à la collection si il n'existe pas, soit, si il existe, de synchroniser avec la table.
 - A votre avis, à quoi sert useEffect ?
+    - Cette fonction permet d'afficher la page vide pendant que les éléments de Firebase se chargent, au lieu que la page se recharge en faisant attendre l'utilisateur. Cela permet entre autre de rendre l'expérience plus "smooth".
 - A quoi sert la fonction `unsubscribe` utilisée dans les `useEffect` de `User.js` ?
+    - 
 - Décrire les trois valeurs de retour de `UseUser`.
+    - error : si une erreur c'est produite, permet d'afficher les informations à propos de celle-ci
+    - loading : le chargement des informations
+    - user : l'objet "user"
 - Combien de collections dans Firebase pouvez-vous identifier ? A quoi correspondent les `doc` ?
+    - Il y a 2 collections dans Firebase : 
+      - "user" qui permet de renseigner les joueurs
+      - "game" qui permet de renseigner les parties
+    - Les `doc` ou documents sont des entrées dans chaque collection, ce qui donnera un document par joueur et par partie.
 
 ### Contribuer à l'application
 

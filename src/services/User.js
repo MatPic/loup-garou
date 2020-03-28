@@ -34,7 +34,7 @@ export const useUser = () => {
       .collection('user')
       .doc(auth.user.uid);
     if(!doc.exists) {
-      doc.set({uid: auth.user.uid})
+      doc.set({uid: auth.user.uid});
     }
     const unsubscribe = doc
       .onSnapshot(

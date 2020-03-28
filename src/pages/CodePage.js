@@ -3,15 +3,8 @@ import {useHistory} from 'react-router-dom';
 import {useUser} from '../services/User';
 import Button from '../components/Button';
 import firebase from '../services/Firebase';
-import styled from "styled-components";
 import Input from '../components/Input';
 
-const Form = styled.form`
-  margin-bottom: 30px;
-    input {
-      margin-bottom: 20px;
-    }
-`;
 
 const CodePage = ({setGame}) => {
   const [code, setCode] = useState('');
