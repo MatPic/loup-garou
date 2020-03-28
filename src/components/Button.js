@@ -4,22 +4,25 @@ import styled from "styled-components";
 const styles = `
   background: transparent;
   border-radius: 3px;
-  border: 2px solid lightblue;
+  border: 2px solid steelblue;
   padding: 1em 1em;
-  display: flex;
   cursor: pointer;
-  color: lightblue;
+  color: steelblue;
+  transition: all .3s;
+  white-space: nowrap;
+  text-decoration: none;
+  font-size: 1em;
+  margin: 10px;
 `;
 
 const CustomizedButton = styled.button`
   ${styles}
   & a {
-    text-decoration: none;
-    color: lightblue;
+    color: steelblue;
   }
   
   &:hover {
-    background-color: lightblue;
+    background-color: steelblue;
     color: white;
     & a {
       color: white;

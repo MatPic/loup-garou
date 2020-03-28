@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import Button from '../components/Button';
 import { useMasterGame, addPlayer } from '../services/MasterGame';
+import Input from '../components/Input';
 
 
 const AddPlayerForm = () => {
@@ -19,13 +20,13 @@ const AddPlayerForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
+      <Input
         type="text"
         name="name"
         placeholder="Ajouter le nom d'un joueur..."
         onChange={e => setValue(e.target.value)}
       />
-      <button>+</button>
+      <Button>+</Button>
     </form>
   );
 };
