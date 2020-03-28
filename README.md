@@ -264,7 +264,6 @@ des composants (telles que setState) et celles des fonctions ?
 - A votre avis, à quoi sert useEffect ?
     - Cette fonction permet d'afficher la page vide pendant que les éléments de Firebase se chargent, au lieu que la page se recharge en faisant attendre l'utilisateur. Cela permet entre autre de rendre l'expérience plus "smooth".
 - A quoi sert la fonction `unsubscribe` utilisée dans les `useEffect` de `User.js` ?
-    - 
 - Décrire les trois valeurs de retour de `UseUser`.
     - error : si une erreur c'est produite, permet d'afficher les informations à propos de celle-ci
     - loading : le chargement des informations
